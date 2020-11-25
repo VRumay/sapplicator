@@ -7,34 +7,20 @@ import time
 
 webdriver_path = r'C:\Users\Rumay-Paz\Desktop\Accenture\Trainings\SQLita\session5 - RPA\chromedriver.exe'
 
-urls = ['https://emprego.sapo.pt/apply-job/51c24b4c-6609-4636-bd3f-e16bed638cc5',
-        'https://emprego.sapo.pt/apply-job/99e3accd-91f3-41bd-98ef-cfd163e14f4a',
-        'https://emprego.sapo.pt/apply-job/883bc063-1d8d-4303-b9a0-7908d2fa1b12',
-        'https://emprego.sapo.pt/apply-job/92f6c2cf-53a5-4cb6-923a-3b4a1cb0d00e',
-        'https://emprego.sapo.pt/apply-job/03ef6dd4-cfbe-40ac-a2cf-8911d1d5ac28',
-        'https://emprego.sapo.pt/apply-job/b83c31d2-3cba-4001-84d9-bb0e1a20ad47',
-        'https://emprego.sapo.pt/apply-job/8d18f6b9-8e44-4a9a-b7ca-73aa8c05f8ff',
-        'https://emprego.sapo.pt/apply-job/d2ce721a-1134-47c9-933f-8a539fd63dd0',
-        'https://emprego.sapo.pt/apply-job/03ef6dd4-cfbe-40ac-a2cf-8911d1d5ac28',
-        'https://emprego.sapo.pt/apply-job/b83c31d2-3cba-4001-84d9-bb0e1a20ad47',
-        'https://emprego.sapo.pt/apply-job/9e7ff056-01ad-4af3-a195-38ca5eade88a',
-        'https://emprego.sapo.pt/apply-job/8b06457a-6343-4cb2-b866-0afd3e469eb7',
-        'https://emprego.sapo.pt/apply-job/5d80f052-aaa0-40e2-8f58-8c64a4f54274',
-        'https://emprego.sapo.pt/apply-job/870701d9-a0b2-4a75-882e-c486da00142e',
-        'https://emprego.sapo.pt/apply-job/fa08f627-8b49-49fb-b098-0809f0b490af',
-        'https://emprego.sapo.pt/apply-job/a8ded9b9-91f4-4035-8ff2-8945eee3fe46',
-        'https://emprego.sapo.pt/apply-job/fce75955-18d0-4339-8f65-275a8ee8e1cd',
-        'https://emprego.sapo.pt/apply-job/b71d1500-78c1-4a4a-a6fc-0e2ba42aaec1',
-        'https://emprego.sapo.pt/apply-job/d4d9d4f2-fd8b-48c1-8197-0b162160ed66',
-        'https://emprego.sapo.pt/apply-job/b71d1500-78c1-4a4a-a6fc-0e2ba42aaec1',
-        'https://emprego.sapo.pt/apply-job/32ce935b-e01f-4a91-8202-5340d0ea51c3',
-        'https://emprego.sapo.pt/apply-job/7d85b2f2-63f4-40c6-a294-dc263f61bfbd',
-        'https://emprego.sapo.pt/apply-job/ea8650a5-49c0-4c58-aa2a-b9ecad9cad8b',
-        'https://emprego.sapo.pt/apply-job/4a6748f7-dc23-4edc-9e27-813e2bad546a',
-        'https://emprego.sapo.pt/apply-job/c195f445-a247-4432-9881-174c413aeb28',
-        'https://emprego.sapo.pt/apply-job/78921aa6-694c-4a8e-b9e1-350cb058f37b',
-        'https://emprego.sapo.pt/apply-job/0c9f38ba-b0b3-4ab7-9a89-e158760b775e',
-        'https://emprego.sapo.pt/apply-job/2e1a1ce1-2dcc-4a97-8957-a255dc110852']
+urls = ['https://emprego.sapo.pt/offers/rpa-junior-developer?id=953fc519-3448-4020-868e-160a8364af52',
+        'https://emprego.sapo.pt/offers/tecnico-p-robotics-process-automation-mf?id=65d0dc9d-7fce-48c5-b912-b698be3f4b98',
+        'https://emprego.sapo.pt/offers/rpa-developer-mf-porto?id=ce762e23-8786-47be-9c82-4aed68632a9d',
+        'https://emprego.sapo.pt/offers/analista-rpa?id=168ea44f-eea6-45ed-b131-289dd847f98e',
+        'https://emprego.sapo.pt/offers/rpa-developer?id=a7aa24c9-803f-42bb-8f7c-253ae3d5db1c',
+        'https://emprego.sapo.pt/offers/software-developer-rpa-portugal?id=b7638f86-6881-442e-928d-4cd7c9e38c4a',
+        'https://emprego.sapo.pt/offers/rpa-developer?id=af0d7b42-c27f-49f1-a8af-09bdb585290d',
+        'https://emprego.sapo.pt/offers/rpaanalyst-developer?id=8ea296cf-94dd-4f0e-b37c-ec80adc8c068',
+        'https://emprego.sapo.pt/offers/rpa-business-analyst?id=a731359d-8aad-448b-a8eb-b095117d4504',
+        'https://emprego.sapo.pt/offers/rpa-developer?id=44ebe36c-e9bf-4c6b-b220-c1d9f747484b',
+        'https://emprego.sapo.pt/offers/rpa-consultant-mf-lisboa?id=6b7fbfa1-06b8-4526-8419-d3b9ff22cfa0',
+        'https://emprego.sapo.pt/offers/consultor-rpa?id=b3146d9e-81a0-4b79-b185-03c5945ed5cd']
+
+
 
 nombre = "Victor Rumay"
 mail = 'rumayv@gmail.com'
@@ -45,7 +31,10 @@ resume = 'C:\\Users\\Rumay-Paz\\Desktop\\Personal\\Victor Rumay - Resume.pdf'
 
 browser = webdriver.Chrome(webdriver_path)
 for url in urls:
-    browser.get(url)
+
+    newUrl = 'https://emprego.sapo.pt/apply-job/' + url.split('=')[1]
+
+    browser.get(newUrl)
        
 
     # Give it a second man, it's going to space and coming back to earth
